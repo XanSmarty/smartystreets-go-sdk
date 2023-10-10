@@ -63,20 +63,12 @@ func (f *LookupFixture) TestDistance() {
 	f.So(f.query.Get("distance"), should.Equal, "3")
 }
 func (f *LookupFixture) TestGeolocation() {
-	typeList := []InternationalGeolocateType{AdminArea, Locality, PostalCode, Geocodes, None}
+	typeList := []InternationalGeolocateType{IPAddress, None}
 	for _, geoLocateType := range typeList {
 		f.lookup.Geolocation = geoLocateType
 		f.populate()
 		f.So(f.query.Get("geolocation"), should.Equal, string(geoLocateType))
 	}
-}
-func (f *LookupFixture) TestAdministrativeArea() {
-	f.lookup.AdministrativeArea = "Hello, World!"
-
-	f.populate()
-
-	f.So(f.query, should.HaveLength, 3)
-	f.So(f.query.Get("include_only_administrative_area"), should.Equal, "Hello, World!")
 }
 func (f *LookupFixture) TestLocality() {
 	f.lookup.Locality = "Hello, World!"

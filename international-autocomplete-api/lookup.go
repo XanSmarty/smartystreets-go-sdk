@@ -12,17 +12,17 @@ const (
 )
 
 type Lookup struct {
-	Country            string
-	Search             string
-	MaxResults         int
-	Distance           int
-	Geolocation        InternationalGeolocateType
-	AdministrativeArea string
-	Locality           string
-	PostalCode         string
-	Latitude           float64
-	Longitude          float64
-	Result             *Result
+	Country     string
+	Search      string
+	AddressID   string
+	MaxResults  int
+	Distance    int
+	Geolocation InternationalGeolocateType
+	Locality    string
+	PostalCode  string
+	Latitude    float64
+	Longitude   float64
+	Result      *Result
 }
 
 func (l Lookup) populate(query url.Values) {
@@ -31,7 +31,6 @@ func (l Lookup) populate(query url.Values) {
 	l.populateMaxResults(query)
 	l.populateDistance(query)
 	l.populateGeolocation(query)
-	l.populateAdministrativeArea(query)
 	l.populateLocality(query)
 	l.populatePostalCode(query)
 	l.populateLatitude(query)
@@ -68,11 +67,6 @@ func (l Lookup) populateGeolocation(query url.Values) {
 		query.Del("geolocation")
 	}
 }
-func (l Lookup) populateAdministrativeArea(query url.Values) {
-	if len(l.AdministrativeArea) > 0 {
-		query.Set("include_only_administrative_area", l.AdministrativeArea)
-	}
-}
 func (l Lookup) populateLocality(query url.Values) {
 	if len(l.Locality) > 0 {
 		query.Set("include_only_locality", l.Locality)
@@ -97,9 +91,6 @@ func (l Lookup) populateLongitude(query url.Values) {
 type InternationalGeolocateType string
 
 const (
-	AdminArea  = InternationalGeolocateType("adminarea")
-	Locality   = InternationalGeolocateType("locality")
-	PostalCode = InternationalGeolocateType("postalcode")
-	Geocodes   = InternationalGeolocateType("geocodes")
-	None       = InternationalGeolocateType("")
+	IPAddress = InternationalGeolocateType("ip_address")
+	None      = InternationalGeolocateType("")
 )

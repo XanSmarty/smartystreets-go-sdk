@@ -37,18 +37,16 @@ func (f *ClientFixture) TestAddressLookupSerializedAndSentWithContext__ResponseS
 				"locality": "2",
 				"administrative_area": "3",
                 "super_administrative_area": "4",
-                "sub_administrative_area": "5",
-				"postal_code": "6",
-				"country_iso3": "7"
+				"postal_code": "5",
+				"country_iso3": "6"
 			},
 			{
-				"street": "8",
-				"locality": "9",
-				"administrative_area": "10",
-                "super_administrative_area": "11",
-                "sub_administrative_area": "12",
-				"postal_code": "13",
-				"country_iso3": "14"
+				"street": "7",
+				"locality": "8",
+				"administrative_area": "9",
+                "super_administrative_area": "10",
+				"postal_code": "11",
+				"country_iso3": "12"
 			}
 		]
 	}`
@@ -71,18 +69,16 @@ func (f *ClientFixture) TestAddressLookupSerializedAndSentWithContext__ResponseS
 			Locality:                "2",
 			AdministrativeArea:      "3",
 			SuperAdministrativeArea: "4",
-			SubAdministrativeArea:   "5",
-			PostalCode:              "6",
-			CountryIso3:             "7",
+			PostalCode:              "5",
+			CountryIso3:             "6",
 		},
 		{
-			Street:                  "8",
-			Locality:                "9",
-			AdministrativeArea:      "10",
-			SuperAdministrativeArea: "11",
-			SubAdministrativeArea:   "12",
-			PostalCode:              "13",
-			CountryIso3:             "14",
+			Street:                  "7",
+			Locality:                "8",
+			AdministrativeArea:      "9",
+			SuperAdministrativeArea: "10",
+			PostalCode:              "11",
+			CountryIso3:             "12",
 		},
 	}})
 }
